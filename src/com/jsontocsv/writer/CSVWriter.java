@@ -1,4 +1,4 @@
-package com.lasercode.printer;
+package com.jsontocsv.writer;
 
 import org.apache.commons.lang.StringUtils;
 
@@ -8,7 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
-public class CsvWriter {
+public class CSVWriter {
 
     public void writeAsCSV(List<Map<String, String>> flatJson, String fileName) throws FileNotFoundException {
         Set<String> headers = collectHeaders(flatJson);
@@ -16,7 +16,6 @@ public class CsvWriter {
         for (Map<String, String> map : flatJson) {
             output = output + getCommaSeperatedRow(headers, map) + "\n";
         }
-        System.out.println(output);
         writeToFile(output, fileName);
     }
 
@@ -27,15 +26,18 @@ public class CsvWriter {
             writer.write(output);
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            close(writer);
         }
-        finally {
-            try {
-                if (writer != null) {
-                    writer.close();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
+    }
+
+    private void close(BufferedWriter writer) {
+        try {
+            if (writer != null) {
+                writer.close();
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -55,13 +57,4 @@ public class CsvWriter {
         }
         return headers;
     }
-
-    private void print(Map<String, String> map) {
-        SortedSet<String> keys = new TreeSet<String>(map.keySet());
-        for (String key : keys) {
-            System.out.println(key + "\t:\t" + map.get(key));
-        }
-    }
-
-
 }

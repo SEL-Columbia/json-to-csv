@@ -1,4 +1,4 @@
-package com.lasercode.parser;
+package com.jsontocsv.parser;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONException;
@@ -52,9 +52,7 @@ public class JsonFlattener {
         for (int i = 0; i < length; i++) {
             if (obj.get(i).getClass() == JSONArray.class) {
                 JSONArray jsonArray = (JSONArray) obj.get(i);
-                if (jsonArray.length() < 1) {
-                    continue;
-                }
+                if (jsonArray.length() < 1) continue;
                 flatten(jsonArray, flatJson, prefix + i);
             } else if (obj.get(i).getClass() == JSONObject.class) {
                 JSONObject jsonObject = (JSONObject) obj.get(i);
@@ -76,9 +74,7 @@ public class JsonFlattener {
                 flatten(jsonObject, flatJson, prefix);
             } else if (obj.get(key).getClass() == JSONArray.class) {
                 JSONArray jsonArray = (JSONArray) obj.get(key);
-                if (jsonArray.length() < 1) {
-                    continue;
-                }
+                if (jsonArray.length() < 1) continue;
                 flatten(jsonArray, flatJson, key);
             } else {
                 String value = obj.getString(key);
