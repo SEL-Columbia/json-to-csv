@@ -17,7 +17,7 @@ public class CsvWriter {
             output = output + getCommaSeperatedRow(headers, map) + "\n";
         }
         System.out.println(output);
-//        writeToFile(output, fileName);
+        writeToFile(output, fileName);
     }
 
     private void writeToFile(String output, String fileName) throws FileNotFoundException {
