@@ -1,7 +1,7 @@
 ####JSON To CSV Converter
 
 
-This code can be used for generating a flat CSV file from a list of JSON Objects. The JSONFlattener will create list of key-value pairs for the generated JSON
+This code can be used for generating a flat CSV file from a list of JSON Objects. The [JSONFlattener](https://github.com/kumaranvram/json-to-csv/blob/master/src/com/lasercode/parser/JsonFlattener.java) will create list of key-value pairs for the generated JSON. The [CSVWriter](https://github.com/kumaranvram/json-to-csv/blob/master/src/com/lasercode/printer/CsvWriter.java) would write the key value pairs to the specified file.
 
 For example, consider the JSON format:
 ````json
@@ -57,3 +57,4 @@ Age,studentName,subjects1marks,subjects1name,subjects2marks,subjects2name,subjec
 
 The column names would dynamically be generated based on the keys in the JSON object.
 
+The sample output file can be seen [here](https://github.com/kumaranvram/json-to-csv/sample.csv).
